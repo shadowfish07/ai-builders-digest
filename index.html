@@ -1,27 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>AI Builders Digest</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@5.0.0-rc.4/dist/themes/vue.min.css">
+
+  <!-- Docsify v5 Core Theme -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@5.0.0-rc.4/dist/themes/core.min.css">
+
+  <style>
+    /* Dark mode overrides */
+    :root {
+      --docsifytabs-border-color: #30363d;
+    }
+    body {
+      background: #0d1117;
+      color: #c9d1d9;
+    }
+    .sidebar {
+      background: #161b22;
+      border-right: 1px solid #30363d;
+    }
+    .sidebar-nav li > a {
+      color: #8b949e;
+    }
+    .sidebar-nav li > a:hover,
+    .sidebar-nav li.active > a {
+      color: #f0f6fc;
+    }
+    .markdown-section h1, .markdown-section h2, .markdown-section h3 {
+      color: #f0f6fc;
+    }
+    .markdown-section a {
+      color: #58a6ff;
+    }
+    code {
+      background: #1c2128;
+      color: #c9d1d9;
+    }
+    .search input {
+      background: #0d1117;
+      color: #c9d1d9;
+      border-color: #30363d;
+    }
+    hr {
+      border-color: #30363d;
+    }
+  </style>
 </head>
-<body>
-  <div id="app">Loading...</div>
+<body class="loading">
+  <div id="app"></div>
+
   <script>
     window.$docsify = {
       name: 'AI Builders Digest',
       logo: '🤖',
       loadSidebar: '_sidebar.md',
       auto2top: true,
-      darkMode: true,
       subMaxLevel: 2,
       search: 'auto',
-      repo: 'https://github.com/zarazhangrui/follow-builders'
+      repo: 'https://github.com/shadowfish07/ai-builders-digest'
     }
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify@5.0.0-rc.4/dist/docsify.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify@5.0.0-rc.4/dist/plugins/search.min.js"></script>
+
+  <!-- Docsify v5 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@5.0.0-rc.4/dist/docsify.min.js"></script>
+
+  <!-- Search plugin -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@5.0.0-rc.4/dist/plugins/search.min.js"></script>
 </body>
 </html>
