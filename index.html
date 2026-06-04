@@ -55,43 +55,59 @@ main th { background:var(--bg-sidebar) }
   <h1>🤖 AI Builders Digest</h1>
   <div class="section">📅 日报存档</div>
   <a href="#" data-file="README.md" onclick="loadFile('README.md');return false">🏠 首页</a>
-  <a href="#" data-file="2026-06-04.md" onclick="loadFile('2026-06-04.md');return false">2026-06-04</a>
+  <div id="nav-list"></div>
 </nav>
 <main id="content"><div class="loader">Loading...</div></main>
 
 <script src="marked.js"></script>
 <script>
 const content = document.getElementById('content');
-const sidebar = document.getElementById('sidebar-list');
+const navList = document.getElementById('nav-list');
+
+// Build navigation from _sidebar.json
+async function buildNav() {
+  try {
+    const resp = await fetch('_sidebar.json?t=' + Date.now());
+    const files = await resp.json();
+    navList.innerHTML = '';
+    files.reverse().forEach(f => {
+      const name = f.replace('.md', '');
+      const a = document.createElement('a');
+      a.href = '#' + f;
+      a.dataset.file = f;
+      a.textContent = name;
+      a.onclick = e => { e.preventDefault(); loadFile(f); };
+      navList.appendChild(a);
+    });
+  } catch(e) {
+    navList.innerHTML = '<a style="color:#f85149">⚠ Nav load failed</a>';
+  }
+}
 
 async function loadFile(path) {
   content.innerHTML = '<div class="loader">Loading...</div>';
   try {
     const resp = await fetch(path);
-    if (!resp.ok) { content.innerHTML = '<h2>File not found: '+path+'</h2>'; return; }
-    const md = await resp.text();
-    content.innerHTML = marked.parse(md);
+    if (!resp.ok) { content.innerHTML = '<h2>Not found</h2>'; return; }
+    content.innerHTML = marked.parse(await resp.text());
     window.scrollTo(0,0);
-    document.title = (path.replace('.md','') + ' - AI Builders Digest');
-    // update active nav link
+    document.title = path.replace('.md','') + ' - AI Builders Digest';
     document.querySelectorAll('nav a[data-file]').forEach(a => {
       a.classList.toggle('active', a.dataset.file === path);
     });
+    history.replaceState(null, '', '#' + path);
   } catch(e) {
-    content.innerHTML = '<h2>Error loading page</h2><p>'+e.message+'</p>';
+    content.innerHTML = '<h2>Error</h2><p>'+e.message+'</p>';
   }
 }
 
-// Route based on hash
 function route() {
-  const hash = location.hash.slice(1);
-  const file = hash || 'README.md';
+  const file = location.hash.slice(1) || 'README.md';
   loadFile(file);
 }
-window.addEventListener('hashchange', route);
 
-// marked.js is bundled locally — zero CDN dependencies
-window.addEventListener('DOMContentLoaded', route);
+window.addEventListener('hashchange', route);
+window.addEventListener('DOMContentLoaded', () => { buildNav(); route(); });
 </script>
 </body>
 </html>
