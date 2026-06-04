@@ -5,50 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>AI Builders Digest</title>
 
-  <!-- Docsify v5 Core Theme (local) -->
-  <link rel="stylesheet" href="assets/core.min.css">
+  <!-- Docsify v4 Vue theme -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/themes/vue.css">
 
   <style>
-    /* GitHub-dark inspired overrides */
-    :root {
-      --docsifytabs-border-color: #30363d;
-    }
-    body {
-      background: #0d1117;
-      color: #c9d1d9;
+    /* Dark mode overrides for the vue theme */
+    body, .sidebar, .content, .markdown-section {
+      background: #0d1117 !important;
+      color: #c9d1d9 !important;
     }
     .sidebar {
-      background: #161b22;
-      border-right: 1px solid #30363d;
+      background: #161b22 !important;
+    }
+    .sidebar-toggle {
+      background: transparent;
     }
     .sidebar-nav li > a {
       color: #8b949e;
     }
-    .sidebar-nav li > a:hover,
     .sidebar-nav li.active > a {
-      color: #f0f6fc;
+      color: #f0f6fc !important;
     }
-    .markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4 {
+    .markdown-section h1, .markdown-section h2, .markdown-section h3 {
       color: #f0f6fc;
     }
     .markdown-section a {
       color: #58a6ff;
     }
-    code {
+    .markdown-section code {
       background: #1c2128;
       color: #c9d1d9;
     }
-    .search input {
+    .search input, .search .input-wrap {
       background: #0d1117;
-      color: #c9d1d9;
       border-color: #30363d;
+    }
+    .search input {
+      color: #c9d1d9;
     }
     hr {
       border-color: #30363d;
     }
+    .github-corner svg {
+      fill: #161b22;
+    }
   </style>
 </head>
-<body class="loading">
+<body>
   <div id="app"></div>
 
   <script>
@@ -63,10 +66,7 @@
     }
   </script>
 
-  <!-- Docsify v5 (local) -->
-  <script src="assets/docsify.min.js"></script>
-
-  <!-- Search plugin (local) -->
-  <script src="assets/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
 </body>
 </html>
