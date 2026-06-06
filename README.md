@@ -4,4 +4,4 @@
 
 Powered by [Hermes Agent](https://hermes-agent.nousresearch.com) · Built with [Docusaurus](https://docusaurus.io)
 
-→ [阅读日报](https://ai-daily.pages.zqydev.me/)
+→ [阅读日报](https://shadowfish07.github.io/ai-builders-digest/)
