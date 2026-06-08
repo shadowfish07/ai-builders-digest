@@ -11,8 +11,8 @@ const config: Config = {
     v4: true,
   },
 
-  url: 'https://shadowfish07.github.io',
-  baseUrl: '/ai-builders-digest/',
+  url: 'https://ai-daily.pages.zqydev.me',
+  baseUrl: '/',
 
   organizationName: 'shadowfish07',
   projectName: 'ai-builders-digest',
